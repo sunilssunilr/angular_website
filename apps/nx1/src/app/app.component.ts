@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
+
 export class AppComponent {
-  title = 'nx1';
+  item1 = "from app component!";
 }
