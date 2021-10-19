@@ -18,8 +18,8 @@
             "tsConfig": "apps/nx1/tsconfig.app.json",
             "inlineStyleLanguage": "less",
             "assets": ["apps/nx1/src/favicon.ico", "apps/nx1/src/assets"],
-            "styles": ["apps/nx1/src/styles.less"],
-            "scripts": []
+            "styles": ["apps/nx1/src/styles.less","node_modules/aos/dist/aos.css"],
+            "scripts": ["node_modules/aos/dist/aos.js"]
           },
           "configurations": {
             "production": {
