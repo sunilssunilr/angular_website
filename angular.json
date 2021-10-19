@@ -117,6 +117,125 @@
           }
         }
       }
+    },
+    "presento": {
+      "projectType": "application",
+      "root": "apps/presento",
+      "sourceRoot": "apps/presento/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/presento",
+            "index": "apps/presento/src/index.html",
+            "main": "apps/presento/src/main.ts",
+            "polyfills": "apps/presento/src/polyfills.ts",
+            "tsConfig": "apps/presento/tsconfig.app.json",
+            "inlineStyleLanguage": "css",
+            "assets": [
+              "apps/presento/src/favicon.ico",
+              "apps/presento/src/assets"
+            ],
+            "styles": ["apps/presento/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/presento/src/environments/environment.ts",
+                  "with": "apps/presento/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "presento:build:production"
+            },
+            "development": {
+              "browserTarget": "presento:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "presento:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/presento/src/**/*.ts",
+              "apps/presento/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/presento"],
+          "options": {
+            "jestConfig": "apps/presento/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "presento-e2e": {
+      "root": "apps/presento-e2e",
+      "sourceRoot": "apps/presento-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/presento-e2e/cypress.json",
+            "devServerTarget": "presento:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "presento:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/presento-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {

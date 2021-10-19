@@ -33,6 +33,13 @@
     "nx1-e2e": {
       "tags": [],
       "implicitDependencies": ["nx1"]
+    },
+    "presento": {
+      "tags": []
+    },
+    "presento-e2e": {
+      "tags": [],
+      "implicitDependencies": ["presento"]
     }
   }
 }
